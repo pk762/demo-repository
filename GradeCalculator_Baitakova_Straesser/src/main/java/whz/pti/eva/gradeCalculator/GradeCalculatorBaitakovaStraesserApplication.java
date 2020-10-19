@@ -1,4 +1,4 @@
-package com.example.demo;
+package whz.pti.eva.gradeCalculator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
