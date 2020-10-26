@@ -2,8 +2,8 @@ package whz.pti.eva.gradeCalculator.grade.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-import org.springframework.data.annotation.Id;
 
 @Entity
 public class Grade {
@@ -14,7 +14,9 @@ public class Grade {
 	private String grade;
 	private String lecture;
 	
-	
+	public Grade () {
+		
+	}
 	public Grade(String lecture, String grade) {
 		this.lecture = lecture;
 		this.grade = grade;
