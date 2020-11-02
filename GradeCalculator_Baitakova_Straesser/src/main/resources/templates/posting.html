@@ -25,14 +25,14 @@
 			</thead>
 		<tbody>
 			<tr th:each="post : ${listAllGrades}">
-				<td th:if="${post.type.equals('out')}" class="word-wrap"
-				th:text="${post.lecture}">nix</td>
-				<td th:if="${post.type.equals('in')}" class="word-wrap"
-				th:text="${post.grade}">nix</td>
+				<td th:if="${post != null}" class="word-wrap"
+				th:text="${post.getLecture}">nix</td>
+				<td th:if="${post != null}" class="word-wrap"
+				th:text="${post.getGrade}">nix</td>
 			</tr>
 		</tbody>
 		</table>
-		<h5>dein post</h5>
+<!--		<h5>dein post</h5>
 		<form th:action="@{/add(from=${fromUser},to=${toUser}) }"
 		method="post">
 			<input class="form-control" type="text" name="lecture"
@@ -43,7 +43,7 @@
 				<br>
 			<input type="submit" class="btn btn-outline-primary btn-sm"
 			value="dein posting">
-		</form>
+-->		</form>
 </div>
 <br>
 <div th:include="fragments/footer :: footer"></div>
