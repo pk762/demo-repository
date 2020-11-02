@@ -1,9 +1,10 @@
-HELP.md
+*.iml
 .gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
+gradle/
+.idea
+*/build
+.DS_Store
+gradle/**
 
 ### STS ###
 .apt_generated
@@ -13,6 +14,21 @@ build/
 .settings
 .springBeans
 .sts4-cache
+
+### eclipse
+.project
+.metadata
+bin/
+tmp/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
 
 ### IntelliJ IDEA ###
 .idea
@@ -24,11 +40,14 @@ out/
 !**/src/test/**/out/
 
 ### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+/.metadata/
+/.recommenders/
 
 ### VS Code ###
 .vscode/
