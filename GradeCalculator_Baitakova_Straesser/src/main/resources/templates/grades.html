@@ -13,7 +13,7 @@
 		class="table table-hover table-bordered table-fixed">
 			<thead>
 				<tr>
-					<th scope="col">Vorlesung</th>
+					<th scope="col">Lecture</th>
 					<th scope="col">Grade</th>
 				</tr>
 			</thead>
@@ -26,6 +26,23 @@
 			</tr>
 		</tbody>
 		</table>
+		<h4>Average Grade:</h4>
+		<br><br>
+		<div class="bg-light">
+			<h6 class="navbar-brand p-1 mr-5">Add new grade:</h6>
+			<form>
+				<label class="font-weight-bold">Lecture</label>
+				<input class="form-control" type="text" name="lecture"
+				minlength="1" maxlength="255">
+				<br>
+				<label class="font-weight-bold">Grade</label>
+				<input class="form-control" type="text" name="grade"
+				minlength="1" maxlength="255">
+				<br>
+				<input type="submit" class="btn btn-outline-primary btn-sm"
+				value="Calculate Average Grade">
+			</form>
+		</div>
 	</div>
 <br>
 <div th:include="fragments/footer :: footer"></div>
