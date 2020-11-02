@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<head th:include="fragments/header :: head"></head>
+<body>
+	<div th:include="fragments/body :: headline
+	(txt='viel spass beim chatten !!!' )">
+	</div>
+	<div th:include="fragments/body :: nav (all=false)"></div>
+	<div class="container">
+<!--  		<h5>
+			<span th:text="${'quatschen mit ' + toUser}">PLACEHOLDER</span>
+		</h5>
+-->
+		<table th:if="${listAllGrades != null}"
+		class="table table-hover table-bordered table-fixed">
+			<thead>
+				<tr>
+					<th scope="col">
+					Vorlesung<i class="fas fa-arrow-circle-left"></i>
+					</th>
+					<th scope="col">Grade</th>
+				</tr>
+			</thead>
+		<tbody>
+			<tr th:each="post : ${listAllGrades}">
+				<td th:if="${post.type.equals('out')}" class="word-wrap"
+				th:text="${post.lecture}">nix</td>
+				<td th:if="${post.type.equals('in')}" class="word-wrap"
+				th:text="${post.grade}">nix</td>
+			</tr>
+		</tbody>
+		</table>
+		<h5>dein post</h5>
+		<form th:action="@{/add(from=${fromUser},to=${toUser}) }"
+		method="post">
+			<input class="form-control" type="text" name="lecture"
+			minlength="1" maxlength="255">
+				<br>
+				<input class="form-control" type="text" name="grade"
+			minlength="1" maxlength="255">
+				<br>
+			<input type="submit" class="btn btn-outline-primary btn-sm"
+			value="dein posting">
+		</form>
+</div>
+<br>
+<div th:include="fragments/footer :: footer"></div>
+</body>
+</html>
