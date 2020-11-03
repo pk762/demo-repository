@@ -32,7 +32,7 @@ public class GradeServiceImpl implements GradeService{
 	}
 
 	@Override
-	public List<Grade> listAllgrades() {
+	public List<Grade> listAllGrades() {
 		return gradeRepository.findAll();
 	}
 }

@@ -6,7 +6,7 @@ import whz.pti.eva.gradeCalculator.grade.domain.Grade;
 
 public interface GradeService {
 	
-	List<Grade> listAllgrades();
+	List<Grade> listAllGrades();
 	
 	void addGrade(String lecture, String grade);
 	

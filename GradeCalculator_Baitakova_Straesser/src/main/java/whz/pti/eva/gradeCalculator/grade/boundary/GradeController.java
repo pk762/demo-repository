@@ -20,7 +20,7 @@ public class GradeController {
 	
 	@RequestMapping("/grades")
 	public String listAllGrades(Model model) {
-		List<Grade> gradesList = gradeService.listAllgrades();
+		List<Grade> gradesList = gradeService.listAllGrades();
 			model.addAttribute("listAllGrades", gradesList);
 			model.addAttribute("averageGrade", gradeService.calculateAverage());
 			return "grades";
