@@ -26,8 +26,10 @@
 			</tr>
 		</tbody>
 		</table>
-		<h4>Average Grade:</h4>
-		<br><br>
+		<div class="h5" >
+			<span th:text="${'Notendurchschnitt: ' + averageGrade}"></span>  
+		</div>
+		<br>
 		<div class="bg-light pl-3">
 			<h6 class="navbar-brand p-1 mr-5">Add new grade:</h6>
 			<form th:action="@{/addGrade}" method="post">

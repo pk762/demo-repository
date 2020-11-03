@@ -22,6 +22,7 @@ public class GradeController {
 	public String listAllGrades(Model model) {
 		List<Grade> gradesList = gradeService.listAllgrades();
 			model.addAttribute("listAllGrades", gradesList);
+			model.addAttribute("averageGrade", gradeService.calculateAverage());
 			return "grades";
 	}
 	
