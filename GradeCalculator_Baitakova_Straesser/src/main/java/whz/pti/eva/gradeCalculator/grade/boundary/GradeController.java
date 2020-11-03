@@ -24,4 +24,10 @@ public class GradeController {
 			model.addAttribute("listAllGrades", gradesList);
 			return "grades";
 	}
+	
+	@RequestMapping(value = "/addGrade", method = RequestMethod.POST)
+	public String addGrade(@RequestParam String lecture, @RequestParam String grade) {
+		gradeService.addGrade(lecture, grade);
+		return "redirect:grades";
+	}
 }
