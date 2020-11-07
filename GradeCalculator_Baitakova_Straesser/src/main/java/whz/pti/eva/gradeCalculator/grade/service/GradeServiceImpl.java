@@ -13,8 +13,8 @@ import whz.pti.eva.gradeCalculator.grade.domain.GradeRepository;
 @Service
 public class GradeServiceImpl implements GradeService{
 	
-	
 	private GradeRepository gradeRepository;
+	
 	@Autowired
 	public GradeServiceImpl(GradeRepository gradeRepository) {
 		this.gradeRepository = gradeRepository;
