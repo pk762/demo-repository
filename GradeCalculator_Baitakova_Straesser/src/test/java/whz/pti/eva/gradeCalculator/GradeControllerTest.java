@@ -1,15 +1,23 @@
 package whz.pti.eva.gradeCalculator;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +29,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import whz.pti.eva.gradeCalculator.config.initialzeDB;
 import whz.pti.eva.gradeCalculator.grade.domain.Grade;
+import whz.pti.eva.gradeCalculator.grade.domain.GradeRepository;
 import whz.pti.eva.gradeCalculator.grade.service.GradeService;
 
 @SpringBootTest //(classes = GradeCalculatorBaitakovaStraesser.class) //(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -40,6 +50,7 @@ class GradeControllerTest {
         mockMvc = MockMvcBuilders
                 .webAppContextSetup(wac)
                 .build();
+             
         when(gradeServiceMock.listAllGrades()).thenReturn(List.of(new Grade("foo","1.3"),new Grade("bar", "3.7")));
     }
     
@@ -50,5 +61,24 @@ class GradeControllerTest {
         		.andExpect(view().name("grades"))
         		.andExpect(model().attribute("listAllGrades", hasSize(2)))
         		.andDo(print());
+    }
+    
+    @Test
+    public void testAddGrade() throws Exception {
+//    	 gradeServiceMock.addGrade("lecture1","1.3");
+//         gradeServiceMock.addGrade("lecture2","1.7");
+//         gradeServiceMock.addGrade("lecture3","1.7");
+    	
+    	mockMvc.perform(post("/addGrade")
+        		.param("lecture", "Mathe")
+        		.param("grade", "1"))
+        		.andExpect(status().is3xxRedirection())
+        		.andExpect(view().name("redirect:grades"))
+        		.andExpect(redirectedUrl("grades"))
+        		.andDo(print());
+     
+        verify(gradeServiceMock).addGrade("Mathe", "1");
+//        Assertions.assertEquals(4, gradeServiceMock.listAllGrades().size());
+                 
     }
 }
