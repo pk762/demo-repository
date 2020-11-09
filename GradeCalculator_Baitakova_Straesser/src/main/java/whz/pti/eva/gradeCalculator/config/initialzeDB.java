@@ -20,8 +20,8 @@ public class initialzeDB {
 	public void init() {
 		// TODO Auto-generated method stub
 		log.debug(" >>> Db initialized");
-		Grade g1 = new Grade("EVA", "1");
-		Grade g2 = new Grade("GdP-1", "2");
+		Grade g1 = new Grade("EVA", "1.3");
+		Grade g2 = new Grade("GdP-1", "3.7");
 		Grade g3 = new Grade("GdP-2", "3");
 		gradeRepo.save(g1);
 		gradeRepo.save(g2);

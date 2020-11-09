@@ -28,11 +28,15 @@ public class GradeServiceImpl implements GradeService{
 	
 	@Override
 	public double calculateAverage() {
-		return gradeRepository.findAll().stream().collect(Collectors.averagingDouble(grade -> Double.parseDouble(grade.getGrade())));
+		return round(gradeRepository.findAll().stream().collect(Collectors.averagingDouble(grade -> Double.parseDouble(grade.getGrade()))));
 	}
 
 	@Override
 	public List<Grade> listAllGrades() {
 		return gradeRepository.findAll();
+	}
+	
+	private double round(double value) {
+	      return Math.round(value * Math.pow(10, 1))/Math.pow(10, 1);
 	}
 }
