@@ -18,6 +18,7 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -47,18 +48,16 @@ class GradeControllerTest {
 	private WebApplicationContext wac;
 
 	private MockMvc mockMvc;
-
-	@Autowired
-	private GradeRepository gradeRepository;
 	
-	@SpyBean
-	private GradeService gradeService;
+	@MockBean
+	private GradeService gradeServiceMock;
 
 	@BeforeEach
 	public void setup() {
 		mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
 
-		//when(gradeServiceMock.listAllGrades()).thenReturn(List.of(new Grade("foo", "1.3"), new Grade("bar", "3.7")));
+		when(gradeServiceMock.listAllGrades()).thenReturn(List.of(new Grade("foo", "1.3"), new Grade("bar", "3.7")));
+		when(gradeServiceMock.calculateAverage()).thenReturn(1.5);
 	}
 
 	@Test
@@ -66,7 +65,9 @@ class GradeControllerTest {
 		mockMvc.perform(get("/grades"))
 		.andExpect(status().isOk())
 		.andExpect(view().name("grades"))
-		.andExpect(model().attribute("listAllGrades", hasSize(0))).andDo(print());
+		.andExpect(model().attribute("listAllGrades", hasSize(2)))
+		.andExpect(model().attribute("averageGrade",  CoreMatchers.is(1.5)))
+		.andDo(print());
 	}
 
 	@Test
@@ -78,13 +79,6 @@ class GradeControllerTest {
 						.andExpect(view().name("redirect:grades"))
 						.andExpect(redirectedUrl("grades"));
 
-		verify(gradeService).addGrade("Mathe", "1");
-		assertThat(gradeRepository.findByLecture("Mathe").get().getGrade(), Matchers.is("1"));
-
-	}
-	
-	@BeforeEach
-	public void delete() {
-		gradeRepository.deleteAll();
+		verify(gradeServiceMock).addGrade("Mathe", "1");
 	}
 }
