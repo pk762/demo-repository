@@ -1,9 +1,6 @@
 package whz.pti.eva.gradeCalculator;
 
-import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -16,17 +13,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.hamcrest.CoreMatchers;
-import org.hamcrest.Matchers;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.web.servlet.MockMvc;
@@ -34,9 +27,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import whz.pti.eva.gradeCalculator.config.initialzeDB;
 import whz.pti.eva.gradeCalculator.grade.domain.Grade;
-import whz.pti.eva.gradeCalculator.grade.domain.GradeRepository;
 import whz.pti.eva.gradeCalculator.grade.service.GradeService;
 
 @SpringBootTest // (classes = GradeCalculatorBaitakovaStraesser.class) //(webEnvironment =
