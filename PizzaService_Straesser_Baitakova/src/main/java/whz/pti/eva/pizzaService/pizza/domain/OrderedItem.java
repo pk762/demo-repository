@@ -3,9 +3,10 @@ package whz.pti.eva.pizzaService.pizza.domain;
 import java.util.ArrayList;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 public class OrderedItem {
@@ -18,14 +19,11 @@ public class OrderedItem {
 	private int quantity;
 	private String userId;
 	
+	@Enumerated(EnumType.STRING)
 	private PizzaSize size;
 	
-	public OrderedItem(long pizzaId, String pizzaName, int quantity, String userId, PizzaSize size) {
-		this.pizzaId =  pizzaId;
-		this.name = pizzaName;
-		this.quantity = quantity;
-		this.userId =  userId;
-		this.size = size; 
+	public OrderedItem() {
+		 
 	}
 	public long getPizzaId() {
 		return pizzaId;

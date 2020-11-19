@@ -1,5 +1,6 @@
 package whz.pti.eva.pizzaService.pizza.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -18,11 +19,8 @@ public class Ordered {
 	@OneToMany
 	private List<OrderedItem> orderedItems;
 
-	public Ordered(int numberOfItems, String userId, List<OrderedItem> orderedItems) {
-
-		this.numberOfItems = numberOfItems;
-		this.userId = userId;
-		this.orderedItems = orderedItems;
+	public Ordered() {
+		this.orderedItems = new ArrayList<OrderedItem>();
 	}
 
 	public String getUserId() {
@@ -45,8 +43,9 @@ public class Ordered {
 		return orderedItems;
 	}
 
-	public void setOrderedItems(List<OrderedItem> orderedItems) {
-		this.orderedItems = orderedItems;
+	public Ordered addOrderedItems(OrderedItem orderedItem) {
+		orderedItems.add(orderedItem);
+		return this;
 	}
 
 }

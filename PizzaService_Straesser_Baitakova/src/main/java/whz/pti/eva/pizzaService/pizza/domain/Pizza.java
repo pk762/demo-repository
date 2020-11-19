@@ -3,21 +3,16 @@ package whz.pti.eva.pizzaService.pizza.domain;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Pizza {
 	
-	@Id@GeneratedValue
-	private Long pizzaId;
-	
+	@Id	
 	private String pizzaName;
 	private BigDecimal priceLarge;
 	private BigDecimal priceMedium;
 	private BigDecimal priceSmall;
-	
-	public Pizza() {}
 	
 	public Pizza(String name, BigDecimal priceL, BigDecimal priceM, BigDecimal priceS) {
 		this.pizzaName = name;
@@ -35,23 +30,19 @@ public class Pizza {
 	public BigDecimal getPriceLarge() {
 		return priceLarge;
 	}
-//	public void setPriceLarge(BigDecimal priceLarge) {
-//		this.priceLarge = priceLarge;
-//	}
+	public void setPriceLarge(BigDecimal priceLarge) {
+		this.priceLarge = priceLarge;
+	}
 	public BigDecimal getPriceMedium() {
 		return priceMedium;
 	}
-//	public void setPriceMedium(BigDecimal priceMedium) {
-//		this.priceMedium = priceMedium;
-//	}
+	public void setPriceMedium(BigDecimal priceMedium) {
+		this.priceMedium = priceMedium;
+	}
 	public BigDecimal getPriceSmall() {
 		return priceSmall;
 	}
-//	public void setPriceSmall(BigDecimal priceSmall) {
-//		this.priceSmall = priceSmall;
-//	}
-
-	public Long getPizzaId() {
-		return pizzaId;
+	public void setPriceSmall(BigDecimal priceSmall) {
+		this.priceSmall = priceSmall;
 	}
 }

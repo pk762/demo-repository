@@ -3,7 +3,10 @@ package whz.pti.eva.pizzaService.pizza.domain;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -13,22 +16,14 @@ public class Item {
 	private String itemId; 
 	private int quantity;
 	
-	@OneToMany
+	@ManyToOne	
+	private Pizza pizza;
 	
-	private List<Pizza> pizza;
+	@Enumerated(EnumType.STRING)
 	private PizzaSize size;
 	
-	public Item() {
-		
-	}
-		
-	public Item(String itemId, int quantity, List<Pizza> pizza, PizzaSize size) {
-		this.itemId = itemId;
-		this.quantity = quantity;
-		this.pizza = pizza;
-		this.size = size;
-	}
-
+	public Item() {}
+	
 	public String getItemId() {
 		return itemId;
 	}
@@ -46,13 +41,14 @@ public class Item {
 	}
 
 
-	public List<Pizza> getPizza() {
+	public Pizza getPizza() {
 		return pizza;
 	}
 
 
-	public void setPizza(List<Pizza> pizza) {
+	public Item withPizza(Pizza pizza) {
 		this.pizza = pizza;
+		return this;
 	}
 
 
@@ -64,6 +60,4 @@ public class Item {
 	public void setSize(PizzaSize size) {
 		this.size = size;
 	}
-	
-	
 }
