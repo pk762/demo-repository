@@ -1,10 +1,11 @@
-package config;
+package whz.pti.eva.pizzaService.config;
 
 import java.math.BigDecimal;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import whz.pti.eva.pizzaService.pizza.domain.Cart;
@@ -18,7 +19,7 @@ import whz.pti.eva.pizzaService.pizza.domain.OrderedRepository;
 import whz.pti.eva.pizzaService.pizza.domain.Pizza;
 import whz.pti.eva.pizzaService.pizza.domain.PizzaRepository;
 import whz.pti.eva.pizzaService.pizza.domain.PizzaSize;
-
+@Component
 public class InitializeDB {
 
 	@Autowired
@@ -35,7 +36,7 @@ public class InitializeDB {
 	
 	@Autowired
 	OrderedItemRepository orderedItemRepo;
-	
+	/*
 	@PostConstruct@Transactional
 	public void initPizzaItemMany2OneUni() {
 		Pizza pizza1 = new Pizza("Margarita", new BigDecimal(20), new BigDecimal(15), new BigDecimal(5));
@@ -105,5 +106,14 @@ public class InitializeDB {
 		ordered.addOrderedItems(orderedItem1).addOrderedItems(orderedItem2).addOrderedItems(orderedItem3);
 		orderedRepo.save(ordered);		
 	}
-	
+	*/
+	@PostConstruct
+	private void init() {
+		Pizza pizza1 = new Pizza("Margarita", new BigDecimal(20), new BigDecimal(15), new BigDecimal(5));
+		pizzaRepo.save(pizza1);
+		Pizza pizza2 = new Pizza("Tonno", new BigDecimal(17), new BigDecimal(12), new BigDecimal(3));
+		pizzaRepo.save(pizza2);
+		Pizza pizza3 = new Pizza("Napoli", new BigDecimal(22), new BigDecimal(17), new BigDecimal(6));
+		pizzaRepo.save(pizza3);
+	}
 }
