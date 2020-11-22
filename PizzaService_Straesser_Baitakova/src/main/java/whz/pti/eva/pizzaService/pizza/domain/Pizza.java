@@ -14,6 +14,10 @@ public class Pizza {
 	private BigDecimal priceMedium;
 	private BigDecimal priceSmall;
 	
+	public Pizza() {
+		
+	}
+	
 	public Pizza(String name, BigDecimal priceL, BigDecimal priceM, BigDecimal priceS) {
 		this.pizzaName = name;
 		this.priceLarge = priceL;
