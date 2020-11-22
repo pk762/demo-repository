@@ -1,19 +1,18 @@
 package whz.pti.eva.pizzaService.pizza.domain;
 
-import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
+import whz.pti.eva.pizzaService.config.BaseEntity;
 
 @Entity
-public class Item {
+public class Item extends BaseEntity<UUID>{
 
-	@Id
-	private String itemId; 
+ 
 	private int quantity;
 	
 	@ManyToOne	
@@ -23,14 +22,6 @@ public class Item {
 	private PizzaSize size;
 	
 	public Item() {}
-	
-	public String getItemId() {
-		return itemId;
-	}
-
-	public void setItemId(String itemId) {
-		this.itemId = itemId;
-	}
 
 	public int getQuantity() {
 		return quantity;
