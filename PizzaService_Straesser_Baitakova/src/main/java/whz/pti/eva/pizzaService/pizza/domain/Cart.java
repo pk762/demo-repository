@@ -2,21 +2,18 @@ package whz.pti.eva.pizzaService.pizza.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-@Entity
-public class Cart {
+import whz.pti.eva.pizzaService.config.BaseEntity;
 
-	@Id
-	private Long id; 
-	
+@Entity
+public class Cart extends BaseEntity<UUID> {
+	   
 	private int quantity;
-	private String userId;
+	private UUID userId;
 	
 	@OneToMany
 	private List <Item> items; 
@@ -31,10 +28,10 @@ public class Cart {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public String getUserId() {
+	public UUID getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(UUID userId) {
 		this.userId = userId;
 	}
 

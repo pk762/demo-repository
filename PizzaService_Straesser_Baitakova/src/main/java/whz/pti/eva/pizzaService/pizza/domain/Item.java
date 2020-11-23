@@ -1,7 +1,6 @@
 package whz.pti.eva.pizzaService.pizza.domain;
 
 import java.util.UUID;
-
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -12,7 +11,6 @@ import whz.pti.eva.pizzaService.config.BaseEntity;
 @Entity
 public class Item extends BaseEntity<UUID>{
 
- 
 	private int quantity;
 	
 	@ManyToOne	

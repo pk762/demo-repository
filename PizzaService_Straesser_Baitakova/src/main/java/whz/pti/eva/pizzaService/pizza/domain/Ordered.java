@@ -2,19 +2,18 @@ package whz.pti.eva.pizzaService.pizza.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-@Entity
-public class Ordered {
+import whz.pti.eva.pizzaService.config.BaseEntity;
 
-	@Id @GeneratedValue
-	private Long id; 
+@Entity
+public class Ordered extends BaseEntity<UUID>{
+ 
 	private int numberOfItems;
-	private String userId;
+	private UUID userId;
 	
 	@OneToMany
 	private List<OrderedItem> orderedItems;
@@ -23,11 +22,11 @@ public class Ordered {
 		this.orderedItems = new ArrayList<OrderedItem>();
 	}
 
-	public String getUserId() {
+	public UUID getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(UUID userId) {
 		this.userId = userId;
 	}
 

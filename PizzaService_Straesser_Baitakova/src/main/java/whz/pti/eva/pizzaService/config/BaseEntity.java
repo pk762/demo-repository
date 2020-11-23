@@ -8,8 +8,7 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class BaseEntity<PK extends Serializable> {
-	@Id
-	@GeneratedValue
+	@Id	@GeneratedValue
 	private PK id;
 
 	public PK getId() {

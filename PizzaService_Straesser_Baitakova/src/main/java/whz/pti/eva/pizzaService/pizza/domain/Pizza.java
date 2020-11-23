@@ -1,14 +1,13 @@
 package whz.pti.eva.pizzaService.pizza.domain;
 
 import java.math.BigDecimal;
-
+import java.util.UUID;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import whz.pti.eva.pizzaService.config.BaseEntity;
 
 @Entity
-public class Pizza {
+public class Pizza extends BaseEntity<UUID> {
 	
-	@Id	
 	private String pizzaName;
 	private BigDecimal priceLarge;
 	private BigDecimal priceMedium;

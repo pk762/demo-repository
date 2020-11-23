@@ -1,6 +1,7 @@
 package whz.pti.eva.pizzaService.pizza.domain;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,16 +9,15 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity
-public class OrderedItem {
+import whz.pti.eva.pizzaService.config.BaseEntity;
 
-	@Id @GeneratedValue
-	private Long id; 
-	
-	private long pizzaId;
+@Entity
+public class OrderedItem extends BaseEntity<UUID>{
+
+	private UUID pizzaId;
 	private String name;
 	private int quantity;
-	private String userId;
+	private UUID userId;
 	
 	@Enumerated(EnumType.STRING)
 	private PizzaSize size;
@@ -25,11 +25,11 @@ public class OrderedItem {
 	public OrderedItem() {
 		 
 	}
-	public long getPizzaId() {
+	public UUID getPizzaId() {
 		return pizzaId;
 	}
-	public void setPizzaId(long pizzaId) {
-		this.pizzaId = pizzaId;
+	public void setPizzaId(Pizza pizza) {
+		this.pizzaId = pizza.getId();
 	}
 	public String getName() {
 		return name;
@@ -43,10 +43,10 @@ public class OrderedItem {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public String getUserId() {
+	public UUID getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(UUID userId) {
 		this.userId = userId;
 	}
 }

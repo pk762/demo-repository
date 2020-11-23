@@ -36,7 +36,7 @@ public class InitializeDB {
 	
 	@Autowired
 	OrderedItemRepository orderedItemRepo;
-/*
+	/*
 	@PostConstruct@Transactional
 	public void initPizzaItemMany2OneUni() {
 		Pizza pizza1 = new Pizza("Margarita", new BigDecimal(20), new BigDecimal(15), new BigDecimal(5));
@@ -44,15 +44,13 @@ public class InitializeDB {
 		
 		Item item1 = new Item();
 		item1.withPizza(pizza1);
-		item1.setItemId(pizza1.getPizzaName());
 		itemRepo.save(item1);
 		
 		Pizza pizza2 = new Pizza("Tonno", new BigDecimal(17), new BigDecimal(12), new BigDecimal(3));
 		pizzaRepo.save(pizza2);
 		
 		Item item2 = new Item();
-		item2.withPizza(pizza2);
-		item2.setItemId(itemId);
+		item2.withPizza(pizza2);;
 		itemRepo.save(item2);
 		
 		Pizza pizza3 = new Pizza("Napoli", new BigDecimal(22), new BigDecimal(17), new BigDecimal(6));
@@ -66,11 +64,8 @@ public class InitializeDB {
 	@PostConstruct@Transactional
 	public void initCartItemOne2ManyUni() {
 		Item item1 = new Item();
-		item1.setItemId("Margarita");
 		Item item2 = new Item();
-		item1.setItemId("Tonno");
 		Item item3 = new Item();
-		item1.setItemId("Napoli");
 		itemRepo.save(item1);
 		itemRepo.save(item2);
 		itemRepo.save(item3);
