@@ -9,8 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import whz.pti.eva.pizzaService.cart.service.CartService;
 import whz.pti.eva.pizzaService.pizza.domain.Pizza;
-import whz.pti.eva.pizzaService.pizza.service.CartService;
 import whz.pti.eva.pizzaService.pizza.service.PizzaService;
 
 

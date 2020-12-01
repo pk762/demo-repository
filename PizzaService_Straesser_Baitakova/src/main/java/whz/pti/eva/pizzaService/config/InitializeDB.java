@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import whz.pti.eva.pizzaService.pizza.domain.Cart;
-import whz.pti.eva.pizzaService.pizza.domain.CartRepository;
+import whz.pti.eva.pizzaService.cart.domain.CartRepository;
 import whz.pti.eva.pizzaService.pizza.domain.Item;
 import whz.pti.eva.pizzaService.pizza.domain.ItemRepository;
 import whz.pti.eva.pizzaService.pizza.domain.Ordered;
