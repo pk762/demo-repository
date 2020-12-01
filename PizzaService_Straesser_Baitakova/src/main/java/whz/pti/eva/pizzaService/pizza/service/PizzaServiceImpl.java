@@ -29,6 +29,7 @@ public class PizzaServiceImpl implements PizzaService {
 	public List<Pizza> listOfAllPizzas() {
 		return pizzaRepository.findAll();
 	}
+	
 
 }
 

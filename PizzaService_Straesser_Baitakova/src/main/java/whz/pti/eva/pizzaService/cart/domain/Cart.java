@@ -1,4 +1,4 @@
-package whz.pti.eva.pizzaService.pizza.domain;
+package whz.pti.eva.pizzaService.cart.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,11 @@ import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import whz.pti.eva.pizzaService.config.BaseEntity;
+import whz.pti.eva.pizzaService.customer.domain.Customer;
+import whz.pti.eva.pizzaService.pizza.domain.Item;
 
 @Entity
 public class Cart extends BaseEntity<UUID> {
@@ -16,7 +19,10 @@ public class Cart extends BaseEntity<UUID> {
 	private UUID userId;
 	
 	@OneToMany
-	private List <Item> items; 
+	private List <Item> items;
+	
+	@OneToOne
+	private Customer customer;
 	
 	public Cart() {
 		this.items = new ArrayList<Item>();
