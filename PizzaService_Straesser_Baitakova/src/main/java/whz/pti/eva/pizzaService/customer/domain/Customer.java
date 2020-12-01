@@ -8,16 +8,17 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import whz.pti.eva.pizzaService.config.BaseEntity;
+
 @Entity
-public class Customer {
+public class Customer extends BaseEntity<Long>{
 	
-	@Id
-	private String userId;
-	
+
 	private String firstName;
 	private String lastName;
 	private String loginName;
 	private String passwordHash;
+	private boolean active;
 	
 	@ManyToMany
 	private List<DeliveryAddress> address;
@@ -25,14 +26,18 @@ public class Customer {
 	public Customer () {}
 	
 
-	public Customer (String firstName, String lastName, String login, String password, List<DeliveryAddress> address) {
+	public Customer (String firstName, String lastName, String login, String password, DeliveryAddress deliveryAddress) {
 		this.setFirstName(firstName);
 		this.setLastName(lastName);
 		this.setLoginName(login);
 		this.setPasswordHash(password);
-		this.address = address;
+		this.addAdress(deliveryAddress);
 	}
-
+	
+	public void addAdress(DeliveryAddress deliveryAddress){
+		this.address.add(deliveryAddress);
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -40,7 +45,11 @@ public class Customer {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
+	
+	public List<DeliveryAddress> getAddresses(){
+		return this.address;
+	}
+	
 	public String getLastName() {
 		return lastName;
 	}
@@ -63,5 +72,15 @@ public class Customer {
 
 	public void setPasswordHash(String passwordHash) {
 		this.passwordHash = passwordHash;
+	}
+
+
+	public boolean isActive() {
+		return active;
+	}
+
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 }

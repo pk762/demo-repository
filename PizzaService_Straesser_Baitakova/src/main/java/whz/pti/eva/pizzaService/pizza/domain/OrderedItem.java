@@ -1,5 +1,6 @@
 package whz.pti.eva.pizzaService.pizza.domain;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -18,6 +19,7 @@ public class OrderedItem extends BaseEntity<UUID>{
 	private String name;
 	private int quantity;
 	private UUID userId;
+	private BigDecimal price;
 	
 	@Enumerated(EnumType.STRING)
 	private PizzaSize size;
@@ -48,5 +50,11 @@ public class OrderedItem extends BaseEntity<UUID>{
 	}
 	public void setUserId(UUID userId) {
 		this.userId = userId;
+	}
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+	public BigDecimal getPrice() {
+		return price;
 	}
 }
