@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import whz.pti.eva.pizzaService.pizza.domain.Item;
 import whz.pti.eva.pizzaService.pizza.domain.ItemRepository;
+import whz.pti.eva.pizzaService.pizza.domain.Pizza;
 import whz.pti.eva.pizzaService.pizza.domain.PizzaRepository;
+import whz.pti.eva.pizzaService.pizza.domain.PizzaSize;
 
 @Service
 public class ItemServiceImpl implements ItemService{
@@ -21,5 +23,17 @@ public class ItemServiceImpl implements ItemService{
 		this.itemRepository = itemRepository; 
 		this.pizzaService = pizzaService; 
 	}
+
+	@Override
+	public Item newItem(Pizza pizza, PizzaSize size, int quantity) {
+		Item item = new Item();
+		item.withPizza(pizza);
+		item.setSize(size);
+		item.setQuantity(quantity);
+		itemRepository.save(item);
+		return item;
+	}
+	
+	
 	
 }

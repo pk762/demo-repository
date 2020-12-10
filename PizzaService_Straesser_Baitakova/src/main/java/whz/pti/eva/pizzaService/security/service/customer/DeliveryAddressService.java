@@ -1,6 +1,6 @@
-package whz.pti.eva.pizzaService.customer.service;
+package whz.pti.eva.pizzaService.security.service.customer;
 
-import whz.pti.eva.pizzaService.customer.domain.Customer;
+import whz.pti.eva.pizzaService.security.domain.Customer;
 
 public interface DeliveryAddressService {
 	

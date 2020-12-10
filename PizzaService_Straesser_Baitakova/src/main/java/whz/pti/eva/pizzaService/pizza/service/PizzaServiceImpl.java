@@ -19,7 +19,7 @@ public class PizzaServiceImpl implements PizzaService {
 		this.pizzaRepository = pizzaRepository;
 	} 
 	
-	
+	@Override
 	public Optional<Pizza> findById(Long id) {
 		return pizzaRepository.findById(id); 
 	}
@@ -28,6 +28,12 @@ public class PizzaServiceImpl implements PizzaService {
 	@Override
 	public List<Pizza> listOfAllPizzas() {
 		return pizzaRepository.findAll();
+	}
+
+
+	@Override
+	public Optional<Pizza> getPizzaByName(String name) {
+		return pizzaRepository.findByPizzaName(name);
 	}
 	
 

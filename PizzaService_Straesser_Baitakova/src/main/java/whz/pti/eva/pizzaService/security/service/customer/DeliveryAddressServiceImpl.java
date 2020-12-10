@@ -1,10 +1,10 @@
-package whz.pti.eva.pizzaService.customer.service;
+package whz.pti.eva.pizzaService.security.service.customer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import whz.pti.eva.pizzaService.customer.domain.Customer;
-import whz.pti.eva.pizzaService.customer.domain.DeliveryAddress;
-import whz.pti.eva.pizzaService.customer.domain.DeliveryAdressRepository;
+import whz.pti.eva.pizzaService.security.domain.Customer;
+import whz.pti.eva.pizzaService.security.domain.DeliveryAddress;
+import whz.pti.eva.pizzaService.security.domain.DeliveryAdressRepository;
 
 public class DeliveryAddressServiceImpl implements DeliveryAddressService {
 	private DeliveryAdressRepository deliveryAdressRepository;

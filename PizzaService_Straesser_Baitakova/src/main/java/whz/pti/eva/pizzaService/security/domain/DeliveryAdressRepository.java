@@ -1,4 +1,4 @@
-package whz.pti.eva.pizzaService.customer.domain;
+package whz.pti.eva.pizzaService.security.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

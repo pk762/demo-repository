@@ -10,7 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import whz.pti.eva.pizzaService.config.BaseEntity;
+import whz.pti.eva.pizzaService.common.BaseEntity;
 
 @Entity
 public class OrderedItem extends BaseEntity<UUID>{

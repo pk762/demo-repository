@@ -17,11 +17,12 @@
 			</thead>
 			<tbody>
 				<tr th:each="pizza : ${listOfAllPizzas}">
-					<form th:action="@{/bestellung}" method="get" th:id="${pizza.PizzaName}"></form>
+					<form th:action="@{/addToCart}" method="POST" th:id="${pizza.PizzaName}"></form>
+					<input type="hidden" name="pizza" th:value="${pizza.PizzaName}" th:form="${pizza.PizzaName}" />
 					<td th:if="${pizza != null}" class="word-wrap" th:text="${pizza.PizzaName}">
-					</td>
+						</td>
 					<td>
-						<select class="form-control" name="Size" th:form="${pizza.PizzaName}">
+						<select class="form-control" name="size" th:form="${pizza.PizzaName}">
       						<option th:text="${'Small / '+pizza.PriceSmall}" value="SMALL"></option> 
       						<option th:text="${'Medium / '+pizza.PriceMedium}" value="MEDIUM"></option> 
       						<option th:text="${'Large / '+pizza.PriceLarge}" value="LARGE"></option> 

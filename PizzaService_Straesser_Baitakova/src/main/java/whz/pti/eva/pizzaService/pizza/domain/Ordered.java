@@ -7,7 +7,7 @@ import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import whz.pti.eva.pizzaService.config.BaseEntity;
+import whz.pti.eva.pizzaService.common.BaseEntity;
 
 @Entity
 public class Ordered extends BaseEntity<UUID>{

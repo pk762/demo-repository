@@ -1,16 +1,19 @@
 package whz.pti.eva.pizzaService.pizza.domain;
 
-import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
 import javax.persistence.ManyToOne;
 
-import whz.pti.eva.pizzaService.config.BaseEntity;
+import whz.pti.eva.pizzaService.common.BaseEntity;
 
 @Entity
-public class Item extends BaseEntity<UUID>{
+public class Item extends BaseEntity<Long>{
 
+	@GeneratedValue
+	private Long itemId;
+	
 	private int quantity;
 	
 	@ManyToOne	

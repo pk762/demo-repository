@@ -4,9 +4,13 @@ package whz.pti.eva.pizzaService.cart.service;
 import java.util.Optional;
 
 import whz.pti.eva.pizzaService.cart.domain.Cart;
+import whz.pti.eva.pizzaService.pizza.domain.Item;
+import whz.pti.eva.pizzaService.security.domain.Customer;
 
 public interface CartService {
 
-	public Optional<Cart> getCart(Long id);
-		
+	void newCart(Customer customer);
+	void addToCart(Cart cart, Item item);
+	Optional<Cart> getCart(Long id);
+    
 }
