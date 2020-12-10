@@ -29,12 +29,13 @@ public class PizzaController {
 	 private PizzaService pizzaService;
 	 private ItemService itemService;
 	 @Autowired
-	 public PizzaController(CartService cartService, PizzaService pizzaService) {
+	 public PizzaController(CartService cartService, PizzaService pizzaService,ItemService itemService ) {
 		 this.cartService = cartService;
 		 this.pizzaService = pizzaService;
+		 this.itemService = itemService;
 	 }
 	 
-	 @RequestMapping(value ="/menu")
+	 @RequestMapping(value = {"/", "/menu"})
 	 public String listAllPizza(Model model) {
 		 List<Pizza> listOfAllPizzas = pizzaService.listOfAllPizzas();
 		 model.addAttribute("listOfAllPizzas",listOfAllPizzas);

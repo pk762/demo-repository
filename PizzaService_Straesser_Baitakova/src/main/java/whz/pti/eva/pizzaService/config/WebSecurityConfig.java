@@ -13,17 +13,11 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-//@EnableWebSecurity(debug = true)
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userDetailsService;
-
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        web.ignoring().antMatchers("/h2-console/**").antMatchers("/console/**");;
-//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -31,9 +25,6 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/signin","/signup","/css/**","/menu").permitAll()
-//                .antMatchers("/b**").permitAll()
-                //.antMatchers("/users/m**").hasAuthority("ADMIN")
-                //.antMatchers("/users/c**").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -47,19 +38,11 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
-//                .logoutUrl("/logout")
+                .logoutUrl("/logout")
                 .permitAll()
                 .and()
-                .rememberMe()
-        ;
+                .rememberMe();
     }
-
-//    @Override
-//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//                .userDetailsService(userDetailsService)
-//                .passwordEncoder(passwordEncoder());
-//    }
     
     @Bean
     public PasswordEncoder passwordEncoder() {

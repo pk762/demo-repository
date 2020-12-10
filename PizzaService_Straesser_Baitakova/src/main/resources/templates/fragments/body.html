@@ -2,7 +2,7 @@
 <html lang="de" xmlns:th="http://www.thymeleaf.org">
 <body>
 	<div th:fragment="headline (txt)">
-		<div th:fragment="nav (all)">
+		<div th:fragment="nav (all,menu)">
 		<div class="container">
 	<nav class="navbar navbar-expand-md navbar-light bg-light">
 			<a class="navbar-brand p-1 mr-5">Pizza Service</a>
@@ -13,6 +13,19 @@
 			</button>
 			<div class="collapse navbar-collapse " id="thenavbarDefault">
 			<ul class="navbar-nav ml-auto">
+			
+					<li class="nav-item navbar-nav p-1" th:if="${currentUser != null}">
+							<form th:action="@{/orders}" method="get">
+								<input type="submit" class="btn btn-outline-dark"
+									value="Orders">		
+							</form>
+					</li>
+					<li class="nav-item navbar-nav p-1" th:if="${currentUser != null and #strings.toString(currentUser.user.role) == 'ADMIN'}">
+							<form th:action="@{/order-overview}" method="get">
+								<input type="submit" class="btn btn-outline-dark"
+									value="All Orders">		
+							</form>
+					</li>
 					<li class="nav-item navbar-nav p-1" th:if="${currentUser == null}">
 							<form th:action="@{/signin}" method="get">
 								<input type="submit" class="btn btn-outline-success"
@@ -20,9 +33,21 @@
 							</form>
 					</li>
 					<li class="nav-item navbar-nav p-1" th:if="${currentUser != null}">
-							<form th:action="@{/cart}" method="get">
+							<form th:action="@{/logout}" method="get">
 								<input type="submit" class="btn btn-outline-success"
-									value="Warenkorb">						
+									value="logout">						
+							</form>
+					</li>
+					<li class="nav-item navbar-nav p-1" th:if="${menu == true}">
+							<form th:action="@{/menu}" method="get">
+								<input type="submit" class="btn btn-outline-info"
+									value="menu">						
+							</form>
+					</li>
+					<li class="nav-item navbar-nav p-1" th:if="${menu == false and currentUser != null}">
+							<form th:action="@{/cart}" method="get">
+								<input type="submit" class="btn btn-outline-info"
+									value="cart">						
 							</form>
 					</li>
 				</ul></div>

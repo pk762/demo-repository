@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <head th:include="fragments/header :: head"></head>
 <body>
-	<div th:include="fragments/body :: nav (all=false)"></div>
+	<div th:include="fragments/body :: nav (all=false,menu=true)"></div>
 	<div class="container">
 		<table th:if="${listOfAllItems != null}" class="table table-hover table-bordered table-fixed">
 			<thead>
@@ -12,17 +12,28 @@
 					<th scope="col">Pizza</th>
 					<th scope="col">Größe</th>
 					<th scope="col">Menge</th>
-					<th scope="col">preis</th>
+					<th scope="col">Preis</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="item : ${listOfAllItems}">
 					<td class="word-wrap" th:text="${item.pizza.PizzaName}">
 					</td>
+					<td class="word-wrap" th:text="${item.size}">
+					</td>
+					<td class="word-wrap" th:text="${item.quantity}">
+					</td>
+					<td class="word-wrap" th:text="${item.price}">
+					</td>
 				</tr>
 			</tbody>
 		</table>
-		<br>
+		<div> <span th:text="${'total price: ' + totalPrice}"> </span> 
+			<form th:action="@{/order}" method="get">
+								<input type="submit" class="btn btn-outline-primary"
+									value="order now">						
+							</form>
+		</div>
 	</div>
 	<br>
 	<div th:include="fragments/footer :: footer"></div>

@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 
 import whz.pti.eva.pizzaService.cart.domain.Cart;
 import whz.pti.eva.pizzaService.cart.domain.CartRepository;
+import whz.pti.eva.pizzaService.order.domain.OrderedItemRepository;
+import whz.pti.eva.pizzaService.order.domain.OrderedRepository;
 import whz.pti.eva.pizzaService.pizza.domain.ItemRepository;
-import whz.pti.eva.pizzaService.pizza.domain.OrderedItemRepository;
-import whz.pti.eva.pizzaService.pizza.domain.OrderedRepository;
 import whz.pti.eva.pizzaService.pizza.domain.Pizza;
 import whz.pti.eva.pizzaService.pizza.domain.PizzaRepository;
 import whz.pti.eva.pizzaService.security.domain.Role;
@@ -74,7 +74,7 @@ public class InitializeDB {
         Cart cartC = new Cart(userCnutz);
         cartRepo.save(cartC);
         
-		Pizza pizza1 = new Pizza("Margarita", new BigDecimal(20), new BigDecimal(15), new BigDecimal(5));
+		Pizza pizza1 = new Pizza("Margherita", new BigDecimal(20), new BigDecimal(15), new BigDecimal(5));
 		pizzaRepo.save(pizza1);
 		Pizza pizza2 = new Pizza("Tonno", new BigDecimal(17), new BigDecimal(12), new BigDecimal(3));
 		pizzaRepo.save(pizza2);

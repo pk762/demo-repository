@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import whz.pti.eva.pizzaService.common.BaseEntity;
 
 @Entity
-public class Pizza extends BaseEntity<UUID> {
+public class Pizza extends BaseEntity<Long> {
 	
 	private String pizzaName;
 	private BigDecimal priceLarge;

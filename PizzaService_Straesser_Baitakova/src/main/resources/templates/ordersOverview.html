@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<head th:include="fragments/header :: head"></head>
+<body>
+	<div th:include="fragments/body :: nav (all=false,menu=false)"></div>
+	<div class="container">
+		<table th:if="${listOfAllOrders != null}" class="table table-hover table-bordered table-fixed">
+			<thead>
+				<tr>
+					<th scope="col">orderID</th>
+					<th scope="col">userID</th>
+					<th scope="col">Number Of Items</th>
+					<th scope="col">Items</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="order : ${listOfAllOrders}">
+					<td th:if="${order != null}" class="word-wrap" th:text="${order.id}"></td>
+					<td th:if="${order != null}" class="word-wrap" th:text="${order.userId}"></td>
+					<td th:if="${order != null}" class="word-wrap" th:text="${order.numberOfItems}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+	</div>
+	<br>
+	<div th:include="fragments/footer :: footer"></div>
+</body>
+</html>

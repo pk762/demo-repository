@@ -33,5 +33,9 @@ public class CartServiceImpl implements CartService {
 		cart.addItem(item);
 		cartRepository.save(cart);
 	}
-	
+	@Override
+	public void clearCart(Cart cart) {
+		cart.clearItems();
+		cartRepository.save(cart);
+	}
 }

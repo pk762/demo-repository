@@ -1,4 +1,4 @@
-package whz.pti.eva.pizzaService.pizza.domain;
+package whz.pti.eva.pizzaService.order.domain;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -11,14 +11,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import whz.pti.eva.pizzaService.common.BaseEntity;
+import whz.pti.eva.pizzaService.pizza.domain.Pizza;
+import whz.pti.eva.pizzaService.pizza.domain.PizzaSize;
 
 @Entity
 public class OrderedItem extends BaseEntity<UUID>{
 
-	private UUID pizzaId;
+	private Long pizzaId;
 	private String name;
 	private int quantity;
-	private UUID userId;
+	private Long userId;
 	private BigDecimal price;
 	
 	@Enumerated(EnumType.STRING)
@@ -27,11 +29,11 @@ public class OrderedItem extends BaseEntity<UUID>{
 	public OrderedItem() {
 		 
 	}
-	public UUID getPizzaId() {
+	public Long getPizzaId() {
 		return pizzaId;
 	}
-	public void setPizzaId(Pizza pizza) {
-		this.pizzaId = pizza.getId();
+	public void setPizzaId(Long pizzaId) {
+		this.pizzaId = pizzaId;
 	}
 	public String getName() {
 		return name;
@@ -45,10 +47,10 @@ public class OrderedItem extends BaseEntity<UUID>{
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public UUID getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
-	public void setUserId(UUID userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 	public void setPrice(BigDecimal price) {
@@ -56,5 +58,13 @@ public class OrderedItem extends BaseEntity<UUID>{
 	}
 	public BigDecimal getPrice() {
 		return price;
+	}
+	
+	public void setSize(PizzaSize size) {
+		this.size = size;
+	}
+
+	public PizzaSize getSize() {
+		return size;
 	}
 }

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <head th:include="fragments/header :: head"></head>
 <body>
-	<div th:include="fragments/body :: nav (all=false)"></div>
+	<div th:include="fragments/body :: nav (all=false,menu=false)"></div>
 	<div class="container">
 		<table th:if="${listOfAllPizzas != null}" class="table table-hover table-bordered table-fixed">
 			<thead>

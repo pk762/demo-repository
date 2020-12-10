@@ -1,4 +1,4 @@
-package whz.pti.eva.pizzaService.pizza.domain;
+package whz.pti.eva.pizzaService.order.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +10,10 @@ import javax.persistence.OneToMany;
 import whz.pti.eva.pizzaService.common.BaseEntity;
 
 @Entity
-public class Ordered extends BaseEntity<UUID>{
+public class Ordered extends BaseEntity<Long>{
  
 	private int numberOfItems;
-	private UUID userId;
+	private Long userId;
 	
 	@OneToMany
 	private List<OrderedItem> orderedItems;
@@ -22,11 +22,11 @@ public class Ordered extends BaseEntity<UUID>{
 		this.orderedItems = new ArrayList<OrderedItem>();
 	}
 
-	public UUID getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(UUID userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
@@ -38,6 +38,9 @@ public class Ordered extends BaseEntity<UUID>{
 		this.numberOfItems = numberOfItems;
 	}
 
+	public void increaseNumberOfItems() {
+		this.numberOfItems++;
+	}
 	public List<OrderedItem> getOrderedItems() {
 		return orderedItems;
 	}

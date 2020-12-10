@@ -12,5 +12,5 @@ public interface CartService {
 	void newCart(Customer customer);
 	void addToCart(Cart cart, Item item);
 	Optional<Cart> getCart(Long id);
-    
+	void clearCart(Cart cart);
 }

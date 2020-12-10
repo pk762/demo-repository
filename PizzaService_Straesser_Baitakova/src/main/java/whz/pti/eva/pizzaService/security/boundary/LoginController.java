@@ -20,4 +20,9 @@ public class LoginController {
 	public String getLoginPage(@RequestParam Optional<String> error, Model model) {
 		return "signIn";
 	}
+	
+	@RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
+	public String getLoginPage(Model model) {
+		return "menu";
+	}
 }

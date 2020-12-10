@@ -17,7 +17,7 @@ public class Cart extends BaseEntity<Long> {
 	private int quantity;
 	private Long userId;
 	
-	@OneToMany(mappedBy= "itemId", cascade = CascadeType.ALL)
+	@OneToMany
 	private List<Item> items;
 	
 	@OneToOne
@@ -49,12 +49,14 @@ public class Cart extends BaseEntity<Long> {
 
 	public Cart addItem(Item item) {
 		this.items.add(item);
-		System.out.println("ADD: " + items);
 		return this;
 	}
 	
 	public List<Item> getItemList(){
-		System.out.println("GET: " + items);
 		return items;
+	}
+	
+	public void clearItems() {
+		items.clear();
 	}
 }
