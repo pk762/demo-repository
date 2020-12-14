@@ -1,53 +1,60 @@
 package whz.pti.eva.pizzaService.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import whz.pti.eva.pizzaService.security.service.currentCustomer.CurrentUserDetailsService;
 
 @Configuration
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-//
-//    @Qualifier("currentUserDetailsService")
-//    @Autowired
-//    private UserDetailsService userDetailsService;
+
+    private CurrentUserDetailsService currentUserDetailsService;
+
+    @Autowired
+    public void setCurrentUserDetailsService(CurrentUserDetailsService currentUserDetailsService) {
+        this.currentUserDetailsService = currentUserDetailsService;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http.csrf().disable();
+
         http
+                // add public available endpoints
                 .authorizeRequests()
-                .antMatchers("/signin","/css/**","/menu").permitAll()
+                .antMatchers("/signin", "/css/**", "/menu").permitAll()
                 .anyRequest().authenticated()
+
+                // add and configure login form
                 .and()
                 .formLogin()
                 .loginPage("/signin")
                 .defaultSuccessUrl("/menu", true)
                 .failureUrl("/signin?error")
                 .usernameParameter("loginName")
-                .permitAll()
+
+                // add logout page
                 .and()
                 .logout()
-                .logoutSuccessUrl("/")
-                .invalidateHttpSession(true)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .deleteCookies("JSESSIONID")
-                .logoutUrl("/logout")
-                .permitAll()
+                .invalidateHttpSession(true)
+                .logoutSuccessUrl("/logout.done")
+
+                // should remember user
                 .and()
-                .rememberMe();
+                .rememberMe()
+                .key("unique")
+                .userDetailsService(currentUserDetailsService)
+        ;
     }
-    
+
     @Bean
     public PasswordEncoder passwordEncoder() {
-    	return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 }
