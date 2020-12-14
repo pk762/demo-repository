@@ -29,7 +29,7 @@ public class CurrentUserDetailsService implements UserDetailsService {
 
     @Override
     public CurrentCustomer loadUserByUsername(String loginName) throws UsernameNotFoundException {
-    	log.debug("Authenticating user with email={}", loginName.replaceFirst("@.*", "@***"));
+    	log.info("Authenticating user with email={}", loginName.replaceFirst("@.*", "@***"));
     	HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String password = request.getParameter("password"); // get from request parameter
         Customer customer = 

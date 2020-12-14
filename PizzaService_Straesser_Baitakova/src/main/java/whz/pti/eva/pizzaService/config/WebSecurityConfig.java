@@ -1,6 +1,7 @@
 package whz.pti.eva.pizzaService.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -13,18 +14,19 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
-    @Autowired
-    private UserDetailsService userDetailsService;
+//
+//    @Qualifier("currentUserDetailsService")
+//    @Autowired
+//    private UserDetailsService userDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
+//        http.csrf().disable();
         http
                 .authorizeRequests()
-                .antMatchers("/signin","/signup","/css/**","/menu").permitAll()
+                .antMatchers("/signin","/css/**","/menu").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
